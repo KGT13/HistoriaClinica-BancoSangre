@@ -1,0 +1,49 @@
+﻿@startuml
+class Paciente {
+  - CI: int
+  - nombre: string
+  - apellidos: string
+  - fechaNacimiento: date
+  - sexo: string
+  - peso: float
+  - estatura: float
+  - direccion: string
+  + buscarDatos()
+  + modificar()
+}
+
+class Imagen {
+  - nombreArchivo: string
+  - fechaTomada: date
+  - tipo: string
+  - comentariosDoctor: string
+}
+
+class Enfermedad {
+  - nombre: string
+  - fechaPadecida: date
+  - tratamientoIndicado: string
+}
+
+class Hospital {
+  + buscarPaciente(CI: int)
+  + obtenerMayoresEstaturas()
+  + obtenerCantidadMujeresDengue()
+  + obtenerPacientesPorNombre()
+  + obtenerPacientesPorPeso()
+  + añadirNuevoPaciente()
+  + eliminarPaciente()
+  + modificarPaciente()
+  + añadirImagen()
+  + eliminarImagen()
+  + modificarImagen()
+  + añadirEnfermedad()
+  + eliminarEnfermedad()
+  + modificarEnfermedad()
+}
+
+Paciente "1" *-- "*" Imagen
+Paciente "1" *-- "*" Enfermedad
+Paciente "1" *-- "1" Hospital
+
+@enduml

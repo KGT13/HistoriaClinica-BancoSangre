@@ -1,0 +1,47 @@
+﻿@startuml
+class Donante {
+  - CI: int
+  - nombre: string
+  - apellidos: string
+  - grupoSanguineo: string
+  - factorRH: string
+  - direccion: string
+  - observaciones: string
+  + buscarDatos()
+  + modificar()
+}
+
+class Donacion {
+  - fecha: int
+  - volumen: float
+  - codigoBolsa: string
+  - localizacionActual: string
+  - CIEmpleado: int
+}
+
+class Empleado {
+  - CI: int
+  - nombre: string
+  - apellidos: string
+  - direccion: string
+  - cargo: string
+}
+
+class BancoSangre {
+  - direccion: string
+  + buscarDonante(CI: int)
+  + obtenerMayoresDonantes()
+  + obtenerDonantesSinDonar(desdeMes: int)
+  + obtenerDonantesPorNombre()
+  + obtenerDonantesPorGrupoSanguineo()
+  + añadirNuevoDonante()
+  + eliminarDonante()
+  + modificarDonante()
+}
+
+Donante "1" *-- "*" Donacion
+Donante "1" *-- "1" BancoSangre
+Empleado "1" *-- "*" Donacion
+BancoSangre "1" *-- "*" Empleado
+
+@enduml
